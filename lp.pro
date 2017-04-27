@@ -24,3 +24,13 @@ sum-up-numbers-general([H|T],N):-
 	sum-up-numbers-general(T, Tsum),
 	N is H + Tsum.
 
+sum-up-numbers-general([H|T],N):-
+	is_list(H),
+	sum-up-numbers-general(H, Hsum),
+	sum-up-numbers-general(T, Tsum),
+	N is Hsum + Tsum.
+
+sum-up-numbers-general([H|T],N):-
+	\+ number(H),
+	sum-up-numbers-general(T,Tsum),
+	N is Tsum.
